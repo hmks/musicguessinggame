@@ -1,0 +1,12 @@
+[
+  {"id": "seed-1", "title": "Blinding Lights", "artist": "The Weeknd", "year": 2019, "preview_url": null, "source": "seed"},
+  {"id": "seed-2", "title": "Levitating", "artist": "Dua Lipa", "year": 2020, "preview_url": null, "source": "seed"},
+  {"id": "seed-3", "title": "Bad Guy", "artist": "Billie Eilish", "year": 2019, "preview_url": null, "source": "seed"},
+  {"id": "seed-4", "title": "Shape of You", "artist": "Ed Sheeran", "year": 2017, "preview_url": null, "source": "seed"},
+  {"id": "seed-5", "title": "Watermelon Sugar", "artist": "Harry Styles", "year": 2019, "preview_url": null, "source": "seed"},
+  {"id": "seed-6", "title": "Dance Monkey", "artist": "Tones and I", "year": 2019, "preview_url": null, "source": "seed"},
+  {"id": "seed-7", "title": "Uptown Funk", "artist": "Mark Ronson", "year": 2014, "preview_url": null, "source": "seed"},
+  {"id": "seed-8", "title": "Havana", "artist": "Camila Cabello", "year": 2017, "preview_url": null, "source": "seed"},
+  {"id": "seed-9", "title": "Shake It Off", "artist": "Taylor Swift", "year": 2014, "preview_url": null, "source": "seed"},
+  {"id": "seed-10", "title": "Believer", "artist": "Imagine Dragons", "year": 2017, "preview_url": null, "source": "seed"}
+]
