@@ -1,0 +1,39 @@
+name: mobile-ci
+
+on:
+  push:
+    paths:
+      - "mobile/**"
+      - ".github/workflows/mobile-ci.yml"
+  pull_request:
+    paths:
+      - "mobile/**"
+      - ".github/workflows/mobile-ci.yml"
+
+jobs:
+  mobile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js
+        if: ${{ hashFiles('mobile/package.json') != '' }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+      - name: Install dependencies
+        if: ${{ hashFiles('mobile/package.json') != '' }}
+        working-directory: mobile
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci
+          else
+            npm install
+          fi
+      - name: Lint
+        if: ${{ hashFiles('mobile/package.json') != '' }}
+        working-directory: mobile
+        run: npm run lint --if-present
+      - name: Test
+        if: ${{ hashFiles('mobile/package.json') != '' }}
+        working-directory: mobile
+        run: npm test --if-present

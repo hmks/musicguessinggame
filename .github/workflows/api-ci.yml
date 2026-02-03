@@ -1,0 +1,37 @@
+name: api-ci
+
+on:
+  push:
+    paths:
+      - "api/**"
+      - ".github/workflows/api-ci.yml"
+  pull_request:
+    paths:
+      - "api/**"
+      - ".github/workflows/api-ci.yml"
+
+jobs:
+  api:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        if: ${{ hashFiles('api/requirements.txt') != '' || hashFiles('api/pyproject.toml') != '' }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        if: ${{ hashFiles('api/requirements.txt') != '' || hashFiles('api/pyproject.toml') != '' }}
+        run: |
+          if [ -f api/requirements.txt ]; then
+            pip install -r api/requirements.txt
+          fi
+          if [ -f api/pyproject.toml ]; then
+            pip install -e api
+          fi
+      - name: Compileall
+        if: ${{ hashFiles('api/app/**/*.py') != '' }}
+        run: python -m compileall api/app
+      - name: Pytest
+        if: ${{ hashFiles('api/tests/**/*.py') != '' }}
+        run: pytest -q api/tests
